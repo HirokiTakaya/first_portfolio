@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="nutritionalsupplement.css">
+</head>
+
+<body>
+    <header>
+        <h1>栄養サプリメント</h1>
+        <div class="dropdown">
+            <button class="dropdown_btn" id="dropdown_btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <circle cx="256" cy="256" r="64" />
+                    <circle cx="256" cy="448" r="64" />
+                    <circle cx="256" cy="64" r="64" />
+                </svg>
+            </button>
+            <div class="dropdown_body">
+                <ul class="dropdown_list">
+                    <li class="dropdown_item"><a href="runningstation.html" class="dropdown_item-link">ランニングステーション</a>
+                    </li>
+                    <li class="dropdown_item"><a href="nutritionalsupplement.html"
+                            class="dropdown_item-link">栄養サプリメント</a></li>
+                    <li class="dropdown_item"><a href="imperialpalace.html" class="dropdown_item-link">トップページ</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <article>
+        栄養サプリメントはランニングに効果的です。走るときのパフォーマンスを上げるだけではなく、ランニング終了後の疲労の回復に効果があります。ランニング前やランニング中にBCAA、EAAの摂取、ランニング後にプロテインを摂ることをお勧めします。疲れが酷い時にはHMBの摂取もすると良いでしょう。
+    </article>
+    <section>
+        <div class="slide">
+            <div class="image_box">
+                <img id="main_image" src="images/IMG_7244.PNG">
+            </div>
+            <div class="toolbar">
+                <div class="nav">
+                    <div id="prev"></div>
+                    <div id="page"></div>
+                    <div id="next"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>　<h4>皇居ラン</h4>
+    </footer>
+    <script>
+        (function () {
+            document.addEventListener('DOMContentLoaded', function () {
+                const btn = document.getElementById('dropdown_btn');
+                if (btn) {
+                    btn.addEventListener('click', function () {
+                        this.classList.toggle('is-open');
+                    });
+                }
+            });
+        }());
+        const images = ['images/IMG_7244.PNG', 'images/IMG_7247.PNG', 'images/IMG_7246.PNG', 'images/IMG_7245.PNG'];
+        let current = 0;
+        function changeImage(num) {
+            if (current + num >= 0 && current + num < images.length) {
+                current += num;
+                document.getElementById('main_image').src = images[current];
+                pageNum();
+            }
+        }
+        function pageNum() {
+            document.getElementById('page').textContent = `${current + 1}/${images.length}`;
+        }
+        pageNum();
+        document.getElementById('prev').onclick = function () {
+            changeImage(-1);
+        };
+        document.getElementById('next').onclick = function () {
+            changeImage(1);
+        };
+    </script>
+</body>
+
+</html>
